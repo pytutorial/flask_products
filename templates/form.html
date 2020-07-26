@@ -1,0 +1,32 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+<div class="container pt-3">
+  {% if update %}
+    <h3>Chỉnh sửa sản phẩm</h3>
+  {% else %}
+    <h3>Thêm mới sản phẩm</h3>
+  {% endif %}
+  <form method="POST">
+    <table class="table">
+      <tr>
+        <td>Mã:</td>
+        <td><input class="form-control" name="code" value="{{form.code}}"></td>
+      </tr>
+      <tr>
+        <td>Tên:</td>
+        <td><input class="form-control" name="name" value="{{form.name}}"></td>
+      </tr>
+      <tr>
+        <td>Giá sản phẩm:</td>
+        <td><input class="form-control" name="price" value="{{form.price}}"></td>
+      </tr>
+    </table>
+    <ul>
+      {% for e in errorList %}
+      <li style="color: red;">{{e}}</li>
+      {% endfor %}
+    </ul>
+    <button class="btn btn-primary" type="submit">Lưu lại</button>
+    <a href='/' class="btn btn-secondary">Quay lại</a>
+  </form>
+</div>

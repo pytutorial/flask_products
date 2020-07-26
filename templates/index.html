@@ -1,0 +1,45 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+<div class="container pt-3">
+  <table class="table table-bordered">
+    <thead>
+      <tr class="text-center">
+        <th style="width:5%">#</th>
+        <th style="width:25%">Mã</th>
+        <th style="width:30%">Tên</th>
+        <th style="width:25%">Giá</th>
+        <th style="width:15%"></th>
+      </tr>
+    </thead>
+    <tbody>
+      {%for p in productList %}
+        <tr>
+          <td class="text-center">{{ loop.index }}</td>
+          <td>{{ p.code }}</td>
+          <td>{{ p.name }}</td>
+          <td>{{ p.price }}</td>
+          <td class="text-center">
+            <a class="btn btn-sm btn-secondary"
+               href='/update_product/{{p.id}}'>
+              Chỉnh sửa
+            </a>
+            <a class="btn btn-sm btn-danger" href='javascript:deleteProduct({{p.id}})'>
+              Xóa
+            </a>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <a class="btn btn-primary" href='/create_product'>
+    Thêm sản phẩm
+  </a>  
+</div>
+<script>
+  function deleteProduct(id) {
+    if(confirm('Bạn có muốn xóa sản phẩm này không?')) {
+      location.href = '/delete_product/' + id;
+    }
+  }
+</script>
